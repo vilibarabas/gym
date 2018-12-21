@@ -1,0 +1,56 @@
+
+<div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'evolutionChart')">Evolutions Chart</button>
+    <button class="tablinks" onclick="openCity(event, 'evolutionTable')"> List</button>
+    <button class="tablinks" onclick="openCity(event, 'newEvolution')"> new Evolution</button>
+</div>
+
+<div id="evolutionChart" class="tabcontent">
+    <div id="container" style="min-width: 800px; height: 300px; margin: 0 auto"></div>
+</div>
+
+<div id="evolutionTable" class="tabcontent">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Weight</th>
+            <th>Time</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for evolution in evolutions %}
+            <tr>
+
+                <td>{{ evolution.weight }}</td>
+                <td>{% if evolution.time %}{{ evolution.time|date('Y-m-d') }}{% endif %}</td>
+                <td>
+
+                            <a href="{{ path('evolution_edit', { 'id': evolution.id }) }}"><span class="glyphicon glyphicon-edit"></span> edit</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div id="newEvolution" class="tabcontent">
+    <ul>
+        <li>
+            <a href="{{ path('personal_evolutions') }}">Create a new evolution</a>
+        </li>
+    </ul>
+</div>
+
+<script>
+    var datas = '{{ evol }}';
+</script>
+
+<script src="{{ asset('bundles/app/js/profile-chart.js') }}"></script>
+
+
+
+
+
+

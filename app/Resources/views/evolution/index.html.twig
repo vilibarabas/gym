@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}, { 'id': evolution.id }
+
+{% block body %}
+    <h1>Evolutions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Weight</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evolution in evolutions %}
+            <tr>
+                <td><a href="{{ path('evolution_show', { 'id': evolution.id }) }}">{{ evolution.id }}</a></td>
+                <td>{{ evolution.weight }}</td>
+                <td>{% if evolution.time %}{{ evolution.time|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('evolution_show', { 'id': evolution.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('evolution_edit', { 'id': evolution.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('evolution_new') }}">Create a new evolution</a>
+        </li>
+    </ul>
+{% endblock %}

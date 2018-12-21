@@ -1,0 +1,16 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Save" />
+{{ form_end(form) }}
+
+
+{% if delete_form %}
+    <ul>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endif %}

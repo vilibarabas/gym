@@ -1,0 +1,39 @@
+{% extends '@SonataAdmin/standard_layout.html.twig' %}
+
+{% block content %}
+    <h1>Foodcategories list</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for foodCategory in foodCategories %}
+            <tr>
+                <td><a href="{{ path('admin_foodcategory_show', { 'id': foodCategory.id }) }}">{{ foodCategory.id }}</a></td>
+                <td>{{ foodCategory.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_foodcategory_show', { 'id': foodCategory.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_foodcategory_edit', { 'id': foodCategory.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_foodcategory_new') }}">Create a new foodCategory</a>
+        </li>
+    </ul>
+{% endblock %}

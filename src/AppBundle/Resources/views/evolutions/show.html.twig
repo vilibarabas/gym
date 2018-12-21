@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Evolution</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ evolution.id }}</td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td>{{ evolution.weight }}</td>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <td>{% if evolution.time %}{{ evolution.time|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('evolution_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('evolution_edit', { 'id': evolution.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

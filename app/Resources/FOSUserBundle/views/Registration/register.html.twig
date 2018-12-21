@@ -1,0 +1,35 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/app/css/login.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block fos_user_content %}
+
+    <div class="container">
+        <div class="card card-container">
+            <form class="form-signin"  action="{{ path('fos_user_registration_register') }}" method="POST">
+                <span id="reauth-email" class="reauth-email"></span>
+
+                {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': '"Email address', 'autofocus' : true } }) }}
+                {{ form_errors(form.email) }}
+
+                {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'User Name' } }) }}
+                {{ form_errors(form.username) }}
+
+                {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Password' } }) }}
+                {{ form_errors(form.plainPassword.first) }}
+
+
+                {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Confirm Password' } }) }}
+                {{ form_errors(form.plainPassword.second) }}
+
+                {{ form_rest(form) }}
+
+                <input class="btn btn-lg btn-primary btn-block" type="submit" value="Register">
+            </form><!-- /form -->
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+
+{% endblock fos_user_content %}

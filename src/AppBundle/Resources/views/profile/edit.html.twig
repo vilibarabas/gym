@@ -1,0 +1,8 @@
+
+{% block body %}
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Save" />
+    {{ form_end(form) }}
+{% endblock %}

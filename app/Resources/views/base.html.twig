@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Fitness &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+        <meta name="keywords" content="gym, fittness, personal trainer" />
+
+
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700,900' rel='stylesheet' type='text/css'>
+
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="{{ asset('fitness/css/animate.css') }}">
+        <!-- Icomoon Icon Fonts-->
+        <link rel="stylesheet" href="{{ asset('fitness/css/icomoon.css') }}">
+        <!-- Bootstrap  -->
+        <link rel="stylesheet" href="{{ asset('fitness/css/bootstrap.css') }}">
+
+        <!-- Superfish -->
+        <link rel="stylesheet" href="{{ asset('fitness/css/superfish.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('fitness/css/style.css') }}">
+
+        <script src="{{ asset('fitness/js/modernizr-2.6.2.min.js') }}"></script>
+
+        <link href="{{ asset('bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet" />
+        <link href="{{ asset('bundles/app/css/style.css') }}" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{{ asset('bootstrap/dist/js/bootstrap.js') }}"></script>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+    <div id="fh5co-wrapper">
+        <div id="fh5co-page">
+            {% include 'AppBundle::base/header.html.twig' %}
+            {% include 'AppBundle::base/fh5co-header.html.twig' %}
+            <div class="container">
+                <div class="row">
+                    {% block body %}{% endblock %}
+                </div>
+                <hr>
+                <hr>
+                <div class="row">
+                    {% include 'AppBundle::base/footer.html.twig' %}
+                </div>
+            </div>
+
+            {% block javascripts %}{% endblock %}
+        </div>
+    </div>
+        <!-- jQuery -->
+        <script src="{{ asset('fitness/js/jquery.min.js') }}"></script>
+        <!-- jQuery Easing -->
+        <script src="{{ asset('fitness/js/jquery.easing.1.3.js') }}"></script>
+        <!-- Bootstrap -->
+        <script src="{{ asset('fitness/js/bootstrap.min.js') }}"></script>
+        <!-- Waypoints -->
+        <script src="{{ asset('fitness/js/jquery.waypoints.min.js') }}"></script>
+        <!-- Stellar -->
+        <script src="{{ asset('fitness/js/jquery.stellar.min.js') }}"></script>
+        <!-- Superfish -->
+        <script src="{{ asset('fitness/js/hoverIntent.js') }}"></script>
+        <script src="{{ asset('fitness/js/superfish.js') }}"></script>
+
+        <!-- Main JS (Do not remove) -->
+        <script src="{{ asset('fitness/js/main.js') }}"></script>
+    </body>
+</html>

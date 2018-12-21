@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/app/css/profile.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/app/css/profile-tab.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
+    <link href="{{ asset('bundles/app/css/fix-profile-side_menu.css') }}" rel="stylesheet" />
+
+{% endblock %}
+
+{% block body %}
+    <div id="content-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="profile-usermenu">
+                    <ul class="nav">
+                        <li {% if page == 'show' %} class="active" {% endif %}>
+                            <a href="{{ path('profile_show') }}">
+                                <i class="glyphicon glyphicon-home"></i>
+                                Profile </a>
+                        </li>
+                        <li {% if page == 'edit' %} class="active" {% endif %}>
+                            <a href="{{ path('profile_change') }}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                                Account Edit </a>
+                        </li>
+                        <li {% if page == 'evolutions' or page == 'evolutions-edit' %} class="active" {% endif %}>
+                            <a href="{{ path('evolution_index') }}">
+                                <i class="glyphicon glyphicon-stats"></i>
+                                Evolutions </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="coll-md-9" id="profile-left-content">
+                {% if page == 'show' %}
+                    {% include 'AppBundle::profile/show.html.twig' %}
+                {% elseif page == 'edit' %}
+                    {% include 'AppBundle::profile/edit.html.twig' %}
+                {% elseif page == 'evolutions' %}
+                    {% include 'AppBundle::evolutions/index.html.twig' %}
+                {% elseif page == 'evolutions-edit' %}
+                    {% include 'AppBundle::evolutions/new.html.twig' %}
+                {% endif %}
+
+            </div>
+        </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/app/js/profile-tab.js') }}"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+    <!-- Additional files for the Highslide popup effect -->
+    <script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
+    <script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
+
+{% endblock %}
