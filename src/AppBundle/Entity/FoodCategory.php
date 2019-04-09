@@ -29,6 +29,13 @@ class FoodCategory
     private $name;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="sort", type="integer")
+     */
+    private $sort;
+
+    /**
      * @var \AppBundle\Entity\Food
      * @ORM\OneToMany(targetEntity="Food", mappedBy="category")
      */
@@ -115,5 +122,29 @@ class FoodCategory
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * Set sort.
+     *
+     * @param int $sort
+     *
+     * @return FoodCategory
+     */
+    public function setSort($sort)
+    {
+        $this->sort = $sort;
+
+        return $this;
+    }
+
+    /**
+     * Get sort.
+     *
+     * @return int
+     */
+    public function getSort()
+    {
+        return $this->sort;
     }
 }

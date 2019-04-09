@@ -59,7 +59,7 @@ class Food
     /**
      * @var \AppBundle\Entity\FoodCategory
      * @ORM\ManyToOne(targetEntity="FoodCategory", inversedBy="foods")
-     * @ORM\JoinColumn(name="food_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     private $category;
 

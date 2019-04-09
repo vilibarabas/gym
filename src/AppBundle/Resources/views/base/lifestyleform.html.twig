@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('bundles/app/css/food_preferences.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    <div id="content-block">
+        <div class="container">
+            <div class="row">
+                {{ form_start(form) }}
+                <div class="row">
+                    <h1> {{ title }} </h1>
+                </div>
+                <hr>
+                <hr>
+
+                {{ form_widget(form) }}
+
+                {% if back %}
+                    <a class="btn btn-lg btn-success" href="{{ back }}"> Back</a>
+                {% endif %}
+                {% if not end %}
+                    <input class="btn btn-lg btn-success" type="submit" value="Next" />
+                {% else %}
+                    <input class="btn btn-lg btn-success" type="submit" value="Finish" />
+                {% endif %}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

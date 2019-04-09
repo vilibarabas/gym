@@ -33,3 +33,11 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    AppBundle\EventListener\LoginListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'security.interactive_login', method: onAuthenticationSuccess  }
+        arguments: [ '@service_container' ]
+    AppBundle\EventListener\RedirectAfterRegistrationSubscriber:
+            tags:
+                - { name: doctrine.event_listener, event: prePersist }
+            arguments: [ '@security.token_storage' ]

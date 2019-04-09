@@ -29,6 +29,13 @@ class FoodCategory
     private $name;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="sort", type="integer")
+     */
+    private $sort;
+
+    /**
      * @var \AppBundle\Entity\Food
      * @ORM\OneToMany(targetEntity="Food", mappedBy="category")
      */
@@ -67,5 +74,53 @@ class FoodCategory
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->foods = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add food.
+     *
+     * @param \AppBundle\Entity\Food $food
+     *
+     * @return FoodCategory
+     */
+    public function addFood(\AppBundle\Entity\Food $food)
+    {
+        $this->foods[] = $food;
+
+        return $this;
+    }
+
+    /**
+     * Remove food.
+     *
+     * @param \AppBundle\Entity\Food $food
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeFood(\AppBundle\Entity\Food $food)
+    {
+        return $this->foods->removeElement($food);
+    }
+
+    /**
+     * Get foods.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFoods()
+    {
+        return $this->foods;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 }

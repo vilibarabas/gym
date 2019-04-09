@@ -29,6 +29,24 @@ class BasePagesController extends Controller
     }
 
     /**
+     * @Route("/error", name="page_not_found")
+     */
+    public function error(Request $request)
+    {
+
+//        $user = $this->getUser();
+//
+//        if(!$user) {
+//            return $this->redirectToRoute('fos_user_security_login');
+//        }
+        // replace this example code with whatever you need
+        return $this->render('AppBundle:base:page_not_found.html.twig', [
+
+        ]);
+    }
+
+
+    /**
      * @Route("/calculate", name="calculate_page")
      * @Method({"GET", "POST"})
      */

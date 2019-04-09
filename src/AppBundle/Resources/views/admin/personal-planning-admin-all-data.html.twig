@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+
+    <div id="content-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <strong>User</strong>
+                    <span> {{ user.username }} </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <h3>Life Styles: </h3>
+                </div>
+            </div>
+            {% for style in personalProgram.lifeStyle %}
+                <div class="row">
+                    <div class="col-md-5">
+                        {% if style.lifeStyleSelect %}
+                        {% set lifeStyle = style.lifeStyleSelect | json_decode %}
+                            <strong> {{ lifeStyle.title }} : </strong>
+                            <span> {{ lifeStyle.data  }}</span>
+                        {% else %}
+
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
