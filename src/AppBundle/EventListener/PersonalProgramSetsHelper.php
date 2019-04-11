@@ -2,13 +2,14 @@
 
 namespace AppBundle\EventListener;
 
-class PersonalProgramSetsHelper {
-    protected function setPersonalProgram($event) {
+use AppBundle\Entity\PersonalProgram;
 
-        $user = $event->getAuthenticationToken()->getUser();
+class PersonalProgramSetsHelper {
+    protected function setPersonalProgram($user) {
+
         $session = $this->container->get('session');
         $personalProgram = $session->get('personalProgramId');
-        print_r($personalProgram);die('a');
+
         //print_r($personalProgram);die;
         if($personalProgram && $personalProgram = $this->getPersonalProgramById($personalProgram, $user)) {
 

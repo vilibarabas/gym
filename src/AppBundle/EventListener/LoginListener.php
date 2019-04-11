@@ -21,7 +21,7 @@ class LoginListener extends PersonalProgramSetsHelper
 
     public function onAuthenticationSuccess( InteractiveLoginEvent $event )
     {
-        $this->setPersonalProgram($event);
-        // executes on successful login
+        $user = $event->getAuthenticationToken()->getUser();
+        $this->setPersonalProgram($user);
     }
 }

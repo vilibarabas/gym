@@ -10,14 +10,13 @@
         <div class="container">
             <div class="row">
                 {{ form_start(form) }}
-                <div class="row">
-                    <h1> {{ title }} </h1>
+                <div class="row lifestyle-title">
+                    <h1 class=""> <strong>{{ title }} </strong></h1>
                 </div>
                 <hr>
-                <hr>
-
                 {{ form_widget(form) }}
-
+                <hr>
+                <div class="custom-btn">
                 {% if back %}
                     <a class="btn btn-lg btn-success" href="{{ back }}"> Back</a>
                 {% endif %}
@@ -27,6 +26,7 @@
                     <input class="btn btn-lg btn-success" type="submit" value="Finish" />
                 {% endif %}
                 {{ form_end(form) }}
+                </div>
             </div>
         </div>
     </div>

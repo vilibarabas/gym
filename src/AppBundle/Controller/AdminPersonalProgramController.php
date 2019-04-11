@@ -22,7 +22,7 @@ class AdminPersonalProgramController extends Controller {
         $personalProgram = $this->getPersonalProgramByUserId($user->getId());
 
         foreach ($personalProgram->getLifeStyle() as $style) {
-            if($lifeStyle = $this->getLifestyleSelectedValue($style)) {
+            if($lifeStyle = $this->getLifestyleSelectedValue($style, 1)) {
                 $style->setLifeStyleSelect($lifeStyle);
             }
         }

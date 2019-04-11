@@ -55,7 +55,7 @@ trait PersonalProgramTrait {
         return isset($program[0]) ? $program[0] : null;
     }
 
-    private function getLifestyleSelectedValue($style) {
+    private function getLifestyleSelectedValue($style, $view = false) {
         $lifeStyle = $style->getLifeStyleSelect();
         if($lifeStyle = json_decode($lifeStyle, true)) {
             $key = array_keys($lifeStyle)[0];
@@ -65,11 +65,17 @@ trait PersonalProgramTrait {
                 $data = array_flip($this->choices[$key]['data']);
 
                 if(isset($data[$value])) {
-                    return json_encode(
-                    [
+
+                    $data = [
                         'title'=> $this->choices[$key]['title'],
                         'data' => $data[$value],
-                    ]);
+                    ];
+
+                    if($view) {
+                        return $data;
+                    }
+
+                    return json_encode($data);
                 }
             }
         }
