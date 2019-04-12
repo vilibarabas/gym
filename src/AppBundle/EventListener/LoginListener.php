@@ -10,8 +10,8 @@ use AppBundle\Entity\User;
 
 class LoginListener extends PersonalProgramSetsHelper
 {
-    private $em;
-    private $container;
+    protected $em;
+    protected $container;
 
     public function __construct($container, EntityManagerInterface $em)
     {

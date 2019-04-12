@@ -1,0 +1,24 @@
+#content-block {
+    width: 100%;
+}
+
+.prograss-bar-container {
+    margin: 0 auto;
+}
+
+.prograss-bar-text span {
+    margin: 0 auto;
+    font-size: 15px;
+}
+
+.info {
+    padding-top: 50px;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
