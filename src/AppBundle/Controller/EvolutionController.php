@@ -55,6 +55,7 @@ class EvolutionController extends Controller
         $ev = [];
         $exact = null;
         foreach($evolutions as $evol) {
+
             if(!$exact) {
                 $exact = $this->getOptimalWeight($evol->getProfile());
             }
@@ -69,7 +70,7 @@ class EvolutionController extends Controller
     }
 
     private function calculByYear($height, $year, $sex) {
-
+        \kint::dump($sex);
         switch($sex) {
             case 'M' :
                 $ex = 50 + 0.75 * ($height - 150) + ($year - 20)/4;

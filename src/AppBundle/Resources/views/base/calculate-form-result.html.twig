@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
+
     <link href="{{ asset('bundles/app/css/calculate-cal.css') }}" rel="stylesheet" />
+    <script type="text/javascript" src="//www.shieldui.com/shared/components/latest/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="//www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+
 {% endblock %}
 
 {% block body %}
@@ -16,28 +20,20 @@
                     <div class="row">
                         <div id="proteina" class="prograss-bar-container"></div>
                     </div>
-                    <div class="row prograss-bar-text">
-                        <span> {{ result['proteina'] }}gr Proteine</span>
-                    </div>
+
                 </div>
                 <div class="col-md-4">
                     <div class="row">
                         <div id="carbo" class="prograss-bar-container"></div>
                     </div>
-                    <div class="row prograss-bar-text">
-                        <span> {{ result['carbo'] }}gr Carbohidrati</span>
-                    </div>
+
                 </div>
                 <div class="col-md-4">
                     <div class="row">
                         <div id="grasimi" class="prograss-bar-container"></div>
                     </div>
-                    <div class="row prograss-bar-text">
-                        <span> {{ result['grasimi'] }}gr Grasimi</span>
-                    </div>
                 </div>
             </div>
-
             <div class="row">
                 <p class="info"><strong> Current Kcals: </strong> <span> {{ result['kcal_mentinere'] }}</span></p>
                 <p class="info"><strong> Necessary Kcals: </strong> <span> {{ result['kcal_obiectiv'] }}</span></p>
@@ -47,30 +43,35 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('bundles/app/js/circle-progress.js') }}"></script>
 
-    <script>
-        $('#proteina').circleProgress({
-            value: {{ result['proteina'] * 100 / result['total'] /100 }},
-            size: 140,
-            fill: {
-                gradient: ["#0033cc", "#3399ff"]
+    <script src="bundles/app/js/jquery.circliful.js"></script>
+
+
+    <script type="text/javascript">
+        jQuery(function ($) {
+
+            chart("#proteina", {{ result['proteina'] * 100 / result['total']}}, "#1E98E4", {{ result['proteina'] }} + ' Proteine');
+            chart("#carbo", {{ result['carbo'] * 100 / result['total'] }}, "yellow",{{ result['carbo'] }} +  ' Carbo', {{ result['total'] }});
+            chart("#grasimi", {{ result['grasimi'] * 100 / result['total'] }}, "red",{{ result['grasimi'] }} + ' Grasimi', {{ result['total'] }});
+
+
+            function chart(selector, percent, color, text) {
+                $(selector).circliful({
+                    animation: 1,
+                    animationStep: 5,
+                    foregroundBorderWidth: 20,
+                    backgroundBorderWidth: 25,
+                    backgroundColor: '#eee',
+                    progressColor: {1: color},
+                    percent: percent,
+                    showPercent: 0,
+                    textSize: 15,
+                    text: text,
+                    textStyle: 'font-size: 14px;',
+                    textColor: '#FFFFFF',
+                });
             }
-        });
-        $('#carbo').circleProgress({
-            value: {{ result['carbo'] * 100 / result['total'] /100 }},
-            size: 140,
-            fill: {
-                gradient: ["yellow", "orange"]
-            }
-        });
-        $('#grasimi').circleProgress({
-            value: {{ result['grasimi'] * 100 / result['total'] /100 }},
-            size: 140,
-            fill: {
-                gradient: ["red", "orange"]
-            }
+
         });
     </script>
-
 {% endblock %}

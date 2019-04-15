@@ -95,7 +95,7 @@ class BasePagesController extends Controller
             }
 
             $result = $this->calculData($formData, $user);
-            \Kint::dump($result);
+
 
             $obiectiv = 'mentinere';
 
