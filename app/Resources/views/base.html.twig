@@ -29,6 +29,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="{{ asset('bootstrap/dist/js/bootstrap.js') }}"></script>
         {% block stylesheets %}{% endblock %}
+        <style>
+
+
+        </style>
     </head>
     <body>
     <div id="fh5co-wrapper">
@@ -37,7 +41,9 @@
             {% include 'AppBundle::base/fh5co-header.html.twig' %}
             <div class="container">
                 <div class="row">
-                    {% block body %}{% endblock %}
+                    <div class="col-md-12">
+                        {% block body %}{% endblock %}
+                    </div>
                 </div>
                 <hr>
                 <hr>
@@ -66,6 +72,6 @@
         <!-- Main JS (Do not remove) -->
         <script src="{{ asset('fitness/js/main.js') }}"></script>
 
-    <link href="{{ asset('bundles/app/css/style.css') }}" rel="stylesheet" />
+        <link href="{{ asset('bundles/app/css/style.css') }}" rel="stylesheet" />
     </body>
 </html>

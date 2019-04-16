@@ -58,6 +58,9 @@ class EvolutionController extends Controller
 
             if(!$exact) {
                 $exact = $this->getOptimalWeight($evol->getProfile());
+                if(!$exact) {
+                    return [];
+                }
             }
             $ev[date_format($evol->getTime(), 'Y-m-d')] = [$exact, $evol->getWeight()];
         }
@@ -66,7 +69,10 @@ class EvolutionController extends Controller
     }
 
     private function getOptimalWeight($profile) {
-        return $this->calculByYear($profile->getHeight(), $profile->getAge(), $profile->getGen());
+        if($profile->getHeight() && $profile->getAge() && $profile->getGen())
+            return $this->calculByYear($profile->getHeight(), $profile->getAge(), $profile->getGen());
+
+        return false;
     }
 
     private function calculByYear($height, $year, $sex) {

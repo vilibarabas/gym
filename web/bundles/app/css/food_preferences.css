@@ -1,5 +1,4 @@
 #content-block {
-
     width: 100%;
     background-color: #1a1a1a;
     color: whitesmoke;
@@ -37,7 +36,6 @@
 .lifestyle-title {
     width: 50%;
     margin: 0 auto;
-    padding-top: 20px;
 }
 
 legend {
