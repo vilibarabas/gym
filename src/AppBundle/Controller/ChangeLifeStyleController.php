@@ -217,7 +217,8 @@ class ChangeLifeStyleController extends Controller
             $back = $this->generateUrl('life_style',
                 array(
                     'style' => $back,
-                    'personalProgram' => $personalProgram->getId()
+                    'personalProgram' => $personalProgram->getId(),
+
                 )
             );
         }
@@ -226,8 +227,18 @@ class ChangeLifeStyleController extends Controller
             'form' => $form->createView(),
             'end' => false,
             'title' => $this->choices[$style]['title'],
-            'back' => $back
+            'back' => $back,
+            'progress_bar_data' => json_encode(['1', '2', '3', '@4', '5', '6']),
+            'progress_settings' => $this->getProgressBarSettings()
         ));
+    }
+
+    private function getProgressBarSettings() {
+        return json_encode([
+            'element' => [
+                'width' => '15%'
+            ]
+        ]);
     }
 
     private function getBeforelifeStyle($style) {

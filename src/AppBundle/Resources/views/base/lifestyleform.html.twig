@@ -41,8 +41,11 @@
     <script src="{{ asset('bundles/app/js/jquery.progressbar.js') }}"></script>
 
     <script>
-
+       var progressBarData = '{{ progress_bar_data }}';
+       var settings = '{{ progress_settings }}';
     </script>
+    <script src="{{ asset('bundles/app/js/custom-progressbar.js') }}"></script>
+    
 
 
 {% endblock %}

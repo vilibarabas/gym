@@ -190,8 +190,8 @@ class BasePagesController extends Controller
                 $form->get('gen')->setData($profile->getGen());
                 $form->get('height')->setData($profile->getHeight());
                 $evolutions = $profile->getEvolutions();
-
-                if(!empty($evolutions)) {
+                
+                if($evolutions->first()) {
                     $form->get('weight')->setData($evolutions->last()->getWeight());
                 }
             }

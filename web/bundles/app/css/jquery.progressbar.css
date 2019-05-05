@@ -172,7 +172,7 @@ ul.checkout-bar a {
         margin: 50px 0 0;
         padding: 0;
         text-align: center;
-        width: 7%; //aici
+        //width: 7%; //aici
     }
     ul.checkout-bar li:before {
         height: 45px;
