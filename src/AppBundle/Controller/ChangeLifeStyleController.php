@@ -144,8 +144,40 @@ class ChangeLifeStyleController extends Controller
             'form' => $form->createView(),
             'end' => $end,
             'title' => $foodCategory->getName(),
-            'back' => $back
+            'back' => $back,
+            'progress_bar_data' => $this->getProgressBarDatas(null, $foodCategory->getId()),
+            'progress_settings' => $this->getProgressBarSettings()
         ));
+    }
+
+    private function getProgressBarDatas($style, $foodCagetory) {
+
+        $datas = [];
+        $i = 1;
+        foreach($this->choices as $key => $choice) {
+            if($style && $style == $key) {
+                $datas[] = "@". $i;
+            }
+            else {
+                $datas[] = (string) $i;
+            }
+            $i++;
+        }
+
+        $foodCategories = $this->getDoctrine()
+            ->getRepository(FoodCategory::class)
+            ->findAll();
+        foreach($foodCategories as $category) {
+            if($foodCagetory && $foodCagetory == $category->getId()) {
+                $datas[] = "@". $i;
+            }
+            else {
+                $datas[] = (string) $i;
+            }
+            $i++;
+        }
+        \kint::dump($datas);
+        return json_encode($datas);
     }
 
     /**
@@ -228,7 +260,7 @@ class ChangeLifeStyleController extends Controller
             'end' => false,
             'title' => $this->choices[$style]['title'],
             'back' => $back,
-            'progress_bar_data' => json_encode(['1', '2', '3', '@4', '5', '6']),
+            'progress_bar_data' => $this->getProgressBarDatas($style, null),
             'progress_settings' => $this->getProgressBarSettings()
         ));
     }

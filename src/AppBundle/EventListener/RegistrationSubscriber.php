@@ -30,7 +30,8 @@ class RegistrationSubscriber extends PersonalProgramSetsHelper
     {
         $this->em = $em;
         $this->container = $container;
-        $this->user = $tokenStorage->getToken()->getUser();
+        if($tokenStorage->getToken())
+            $this->user = $tokenStorage->getToken()->getUser();
     }
 
     public function onKernelController(FilterControllerEvent $event)
@@ -38,7 +39,7 @@ class RegistrationSubscriber extends PersonalProgramSetsHelper
         $request = $event->getRequest();
         $_route  = $request->attributes->get('_route');
 
-        if($_route == 'fos_user_registration_confirmed') {
+        if($_route == 'fos_user_registration_confirmed' && $this->user) {
             $this->setPersonalProgram($this->user);
         }
     }

@@ -22,7 +22,8 @@
 					class_name = 'visited first';
 				} else {
 					before = class_name; 
-					class_name = 'visited';
+					if(before)
+						class_name = 'visited';
 				}
 
 				if(value[0] == '@') {
