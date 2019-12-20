@@ -9,6 +9,7 @@
 
 
 #content-block{
+  margin-top: 40px;
   min-height: 1000px;
   background-color: #4d4d4d;
   width: 100%;
@@ -17,4 +18,8 @@
 #footer {
   margin-left: 15px;
   margin-right: 15px;
+}
+
+#fh5co-primary-menu a {
+  font-size: 20px;
 }
