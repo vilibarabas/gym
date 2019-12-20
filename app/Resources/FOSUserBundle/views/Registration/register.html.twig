@@ -3,33 +3,43 @@
 
 {% block stylesheets %}
     <link href="{{ asset('bundles/app/css/login.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/app/css/login.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block fos_user_content %}
 
-    <div class="container">
-        <div class="card card-container">
-            <form class="form-signin"  action="{{ path('fos_user_registration_register') }}" method="POST">
-                <span id="reauth-email" class="reauth-email"></span>
+     <div class="container">
+        <div class="card card-login bg-dark">
 
-                {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': '"Email address', 'autofocus' : true } }) }}
-                {{ form_errors(form.email) }}
+            <div class="card-body">
 
-                {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'User Name' } }) }}
-                {{ form_errors(form.username) }}
+                    <form class="form-signin"  action="{{ path('fos_user_registration_register') }}" method="POST">
+                        <span id="reauth-email" class="reauth-email"></span>
+                        <div class="input-group form-group">
+                        {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email address', 'autofocus' : true } }) }}
+                        {{ form_errors(form.email) }}
+                        </div>
+                        <div class="input-group form-group">
+                        {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'User Name' } }) }}
+                        {{ form_errors(form.username) }}
+                        </div>
+                        <div class="input-group form-group">
+                        {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Password' } }) }}
+                        {{ form_errors(form.plainPassword.first) }}
+                        </div>
+                        <div class="input-group form-group">
 
-                {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Password' } }) }}
-                {{ form_errors(form.plainPassword.first) }}
+                        {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Confirm Password' } }) }}
+                        {{ form_errors(form.plainPassword.second) }}
 
+                        {{ form_rest(form) }}
+                        </div>
 
-                {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Confirm Password' } }) }}
-                {{ form_errors(form.plainPassword.second) }}
+                        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Register">
+                    </form><!-- /form -->
 
-                {{ form_rest(form) }}
-
-                <input class="btn btn-lg btn-primary btn-block" type="submit" value="Register">
-            </form><!-- /form -->
-        </div><!-- /card-container -->
+            </div>
+        </div>
     </div><!-- /container -->
 
 {% endblock fos_user_content %}

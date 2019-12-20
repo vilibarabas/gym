@@ -1,17 +1,20 @@
+
 .fh5co-lightgray-section {
     width: 100%;
 }
-
 
 .text-center{
     width: 100%;
 }
 
-.card-container {
-    font-size: 30px;
-    margin: 0 auto;
-    margin-top: 20px;
-    width: 250px;
+
+#content-block{
+  min-height: 1000px;
+  background-color: #4d4d4d;
+  width: 100%;
 }
 
-
+#footer {
+  margin-left: 15px;
+  margin-right: 15px;
+}
