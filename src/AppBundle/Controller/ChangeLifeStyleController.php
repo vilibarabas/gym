@@ -176,8 +176,6 @@ class ChangeLifeStyleController extends Controller
             }
             $i++;
         }
-
-        return json_encode($datas);
     }
 
     /**
@@ -268,7 +266,7 @@ class ChangeLifeStyleController extends Controller
     private function getProgressBarSettings() {
         return json_encode([
             'element' => [
-                'width' => '15%'
+                'width' => '13%'
             ]
         ]);
     }
