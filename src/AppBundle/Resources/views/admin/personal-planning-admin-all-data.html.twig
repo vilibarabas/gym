@@ -25,10 +25,10 @@
                             <strong> {{ style.lifeStyleSelect.title }} : </strong>
                             <span> {{ style.lifeStyleSelect.data  }}</span>
                         {% else %}
-                            <h2> style.foods[0].category.name</h2>
+                            <h2> {{style.foods|first.category.name}}</h2>
                             <ul>
                             {% for food in style.foods %}
-                                <li> - {{ food.name }}</li>
+                                <li> - {{  food.name }}</li>
                             {% endfor %}
                             </ul>
                         {% endif %}

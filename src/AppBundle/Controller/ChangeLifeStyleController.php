@@ -176,7 +176,7 @@ class ChangeLifeStyleController extends Controller
             }
             $i++;
         }
-        \kint::dump($datas);
+
         return json_encode($datas);
     }
 

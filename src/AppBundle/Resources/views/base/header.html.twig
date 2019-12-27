@@ -7,6 +7,19 @@
                 <!-- START #fh5co-menu-wrap -->
                 <nav id="fh5co-menu-wrap" role="navigation">
                     <ul class="sf-menu" id="fh5co-primary-menu">
+                        
+                        <li class="left">
+                            <div class="admin">
+                              <a href="#">Admin</a>
+                              <div class="admin-content">
+                                <a href="{{ path('admin_personal_program_by_user', {user: 1}) }}">All Programs</a>
+                                <a href="{{ path('admin_foodcategory_index') }}">Food Categories Management</a>
+                                <a href="{{ path('admin_food_index', {user: 1}) }}">Food Management</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                              </div>
+                            </div>
+                        </li>
                         <li class="active">
                             <a href="{{ path('homepage') }}">Home</a>
                         </li>
