@@ -163,7 +163,7 @@ class ChangeLifeStyleController extends Controller
             }
             $i++;
         }
-
+     
         $foodCategories = $this->getDoctrine()
             ->getRepository(FoodCategory::class)
             ->findAll();
@@ -176,6 +176,8 @@ class ChangeLifeStyleController extends Controller
             }
             $i++;
         }
+
+        return json_encode($datas);
     }
 
     /**
