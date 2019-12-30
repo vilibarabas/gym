@@ -23,8 +23,8 @@
                 <tr>
                   <th scope="row">1</th>
                   <td>{{personalProgram.userRefId.username}}</td>
-                  <td><a href="{{personalProgram.id}}"> EDIT</a></td>
-                  <td><a href="{{personalProgram.id}}"> DELETE</a></td>
+                  <td><a href="{{ path('admin_personal_program_by_user', { 'user': personalProgram.userRefId.id }) }}"> EDIT</a></td>
+                  <td><a href="{{ path('admin_personal_program_delete', { 'id': personalProgram.id }) }}"> DELETE</a></td>
                   
                 </tr>            
             {% endfor %}

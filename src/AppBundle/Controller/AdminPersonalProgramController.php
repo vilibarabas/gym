@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Entity\User;
 use AppBundle\Traits\PersonalProgramTrait;
+use AppBundle\Entity\PersonalProgram;
+
 
 class AdminPersonalProgramController extends Controller {
 
@@ -46,13 +48,23 @@ class AdminPersonalProgramController extends Controller {
     public function personalProgramsAction(Request $request)
     {
         $personalPrograms = $this->getPersonalPrograms();
-        \kint::dump($personalPrograms);
-        if(!$personalPrograms) {
-            return $this->redirectToRoute('page_not_found');
-        }
+    
         
         return $this->render('AppBundle:admin:personal-planning-admin-all-programs.html.twig', array(
             'personalPrograms' => $personalPrograms
         ));
+    }
+
+    /**
+     * @Route("admin/personalProgramDelete/{id}", name="admin_personal_program_delete")
+     * @Method({"GET", "POST"})
+     */
+    public function personalProgramDeleteAction(Request $request, PersonalProgram $personalProgram)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->remove($personalProgram);
+        $em->flush();
+
+        return $this->redirectToRoute('admin_personal_program_list');
     }
 }
