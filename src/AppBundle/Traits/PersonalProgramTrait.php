@@ -55,6 +55,14 @@ trait PersonalProgramTrait {
         return isset($program[0]) ? $program[0] : null;
     }
 
+    private function getPersonalPrograms() {
+        $program = $this->getDoctrine()
+            ->getRepository(PersonalProgram::class)
+            ->findAll();
+        
+        return $program;
+    }
+
     private function getLifestyleSelectedValue($style, $view = false) {
         $lifeStyle = $style->getLifeStyleSelect();
         if($lifeStyle = json_decode($lifeStyle, true)) {

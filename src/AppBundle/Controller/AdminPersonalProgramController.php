@@ -21,7 +21,13 @@ class AdminPersonalProgramController extends Controller {
     {
         $personalProgram = $this->getPersonalProgramByUserId($user->getId());
 
+
+        if(!$personalProgram) {
+            return $this->redirectToRoute('page_not_found');
+        }
+
         foreach ($personalProgram->getLifeStyle() as $style) {
+            //\kint::dump($style);
             if($lifeStyle = $this->getLifestyleSelectedValue($style, 1)) {
                 $style->setLifeStyleSelect($lifeStyle);
             }
@@ -30,6 +36,23 @@ class AdminPersonalProgramController extends Controller {
         return $this->render('AppBundle:admin:personal-planning-admin-all-data.html.twig', array(
             'user' => $user,
             'personalProgram' => $personalProgram
+        ));
+    }
+
+    /**
+     * @Route("admin/personalPrograms", name="admin_personal_program_list")
+     * @Method({"GET", "POST"})
+     */
+    public function personalProgramsAction(Request $request)
+    {
+        $personalPrograms = $this->getPersonalPrograms();
+        \kint::dump($personalPrograms);
+        if(!$personalPrograms) {
+            return $this->redirectToRoute('page_not_found');
+        }
+        
+        return $this->render('AppBundle:admin:personal-planning-admin-all-programs.html.twig', array(
+            'personalPrograms' => $personalPrograms
         ));
     }
 }
