@@ -37,8 +37,8 @@
     <body>
     <div id="fh5co-wrapper">
         <div id="fh5co-page">
-            {% include 'AppBundle::base/header.html.twig' %}
-            {% include 'AppBundle::base/fh5co-header.html.twig' %}
+            {% include 'AppBundle::admin/admin-head.html.twig' %}
+             {% include 'AppBundle::base/fh5co-header.html.twig' %}
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -47,9 +47,6 @@
                 </div>
                 <hr>
                 <hr>
-                <div class="row">
-                    {% include 'AppBundle::base/footer.html.twig' %}
-                </div>
             </div>
 
             {% block javascripts %}{% endblock %}

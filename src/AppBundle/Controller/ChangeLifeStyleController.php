@@ -402,9 +402,11 @@ class ChangeLifeStyleController extends Controller
     private function saveLifeStyle($personalProgram, $formData, $style) {
         $lifeStyle = new LifeStyle();
         $lifeStyle->setPersonalProgram($personalProgram);
+        
         if(isset($formData[$this->life_style_form_key])) {
             $data = [];
             $data[$style] = $formData[$this->life_style_form_key];
+            $this->getLifeStyle($personalProgram->getId(), $data);
             $lifeStyle->setLifeStyleSelect(json_encode($data));
             $em = $this->getDoctrine()->getManager();
             $em->persist($lifeStyle);
@@ -412,28 +414,18 @@ class ChangeLifeStyleController extends Controller
         }
     }
 
-//    private function getLifeStyle($id, $lifestyle) {
-//        $em = $this->getDoctrine()->getEntityManager();
-//        $query = $em->createQueryBuilder()
-//            ->select('l.id, l.life_style_select')
-//            ->from('AppBundle:LifeStyle', 'l')
-//            ->where('l.life_style_select LIKE "%'. $lifestyle.'%"')
-//            ->andWhere('l.life_style_select LIKE "%'. $lifestyle.'%"');
-//
-////        $lifestyle = $this->getDoctrine()
-////            ->getRepository(LifeStyle::class)
-////            ->findByPersonalProgram($id);
-////
-////        return $lifestyle;
-//
-//        $criteria = new \Doctrine\Common\Collections\Criteria();
-//        $criteria
-//            ->orWhere($criteria->expr()->contains('life_style_select', $lifestyle));
-////            ->orWhere($criteria->expr()->contains('domains', 'b'));
-//
-//        $groups = $em
-//            ->getRepository(LifeStyle::class)
-//            ->matching($criteria);
-//        \Kint::dump($groups);
-//    }
+
+
+   private function getLifeStyle($id, $data) {
+        // $entityManager = $this->getDoctrine()->getManager();
+        // $lifestyleLike = substr(json_encode($data), 0, 5);
+        
+        // $result = $entityManager->getRepository(LifeStyle::class)->createQueryBuilder('l')
+        //    ->where('l.lifeStyleSelect LIKE :lifestyle')
+        //    ->setParameter('lifestyle', $lifestyleLike)
+        //    ->getQuery()
+        //    ->getResult();
+
+        // \Kint::dump($lifestyleLike);die; 
+   }
 }

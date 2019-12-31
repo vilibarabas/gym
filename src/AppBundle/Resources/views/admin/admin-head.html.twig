@@ -7,23 +7,30 @@
                 <!-- START #fh5co-menu-wrap -->
                 <nav id="fh5co-menu-wrap" role="navigation">
                     <ul class="sf-menu" id="fh5co-primary-menu">
-                        {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
-                            <li>
-                                <a href="{{ path('admin-dashboard') }}">Dasboard</a>
-                            </li>
-                        {% endif %}
-                        <li>
-                            <a href="{{ path('homepage') }}">Home</a>
+                        <li class="active">
+                            <a href="{{ path('homepage') }}">Back to site</a>
                         </li>
                         <li>
-                            <a href="{{ path('calculate_page') }}">Calculator</a>
+                            <a class="fh5co-sub-ddown" href="#">Personal Planing</a>
+                            <ul class="fh5co-sub-menu">
+                                <li>
+                                    <a href="{{ path('admin_personal_program_list', {}) }}">All Programs</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('admin_foodcategory_index') }}">Food Categories Management</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('admin_food_index', {user: 1}) }}">Food Management</a>
+                                </li>
+                                <li>
+                                    <a href="#">Link 2</a>
+                                </li>
+                                <li>
+                                    <a href="#">Link 3</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="{{ path('life_style', {style: 'lifeStyle'}) }}">Program Personalizat</a>
-                        </li>
-                        <li><a href="{{ path('calculate_page') }}">Trainers</a></li>
-                        <li><a href="{{ path('calculate_page') }}">About</a></li>
-                        <li><a href="{{ path('calculate_page') }}">Contact</a></li>
+                        
                         <li>
                             <a href="{{ path('profile_show') }}" class="fh5co-sub-ddown">Profile</a>
                             <ul class="fh5co-sub-menu">

@@ -30,8 +30,6 @@ class BasePagesController extends Controller
      */
     public function indexAction(Request $request)
     {
-
-//        $user = $this->getUser();
 //
 //        if(!$user) {
 //            return $this->redirectToRoute('fos_user_security_login');
