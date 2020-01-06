@@ -1,0 +1,35 @@
+{% extends 'admin-layout.html.twig' %}
+
+{% block stylesheets %}
+ <link href="{{ asset('bundles/app/css/admin.css') }}" rel="stylesheet" />
+
+{% endblock %}
+
+{% block body %}
+
+    <div id="content-block">
+        <div class="container">
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">User name</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>           
+            {% for personalProgram in personalPrograms %}
+                <tr>
+                  <th scope="row">1</th>
+                  <td>{{personalProgram.userRefId.username}}</td>
+                  <td><a href="{{ path('admin_personal_program_by_user', { 'user': personalProgram.userRefId.id }) }}"> EDIT</a></td>
+                  <td><a href="{{ path('admin_personal_program_delete', { 'id': personalProgram.id }) }}"> DELETE</a></td>
+                  
+                </tr>            
+            {% endfor %}
+            </tbody>
+        </table> 
+        </div>
+    </div>
+{% endblock %}

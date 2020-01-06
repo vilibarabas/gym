@@ -31,7 +31,7 @@ class PersonalProgram
     /**
      * @var \AppBundle\Entity\LifeStyle
      * One product has many features. This is the inverse side.
-     * @ORM\OneToMany(targetEntity="LifeStyle", mappedBy="personalProgram")
+     * @ORM\OneToMany(targetEntity="LifeStyle", mappedBy="personalProgram", cascade={"remove"}, orphanRemoval=true)
      */
 
     private $lifeStyle;
